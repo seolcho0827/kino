@@ -1,94 +1,88 @@
-# Kino Design System
+# Twilight（暮光）
 
-A design system built for a data-dense dashboard product with a warm, earthy visual identity. The palette centers on amber and teal, grounded by neutral tones that avoid the cold greys typical of enterprise analytics tools.
+> [English](README.md)
 
-## What this design system covers
+Twilight 是 Kino 设计系统的首发风格，专为东亚影视信息数据库等数据密集型仪表盘产品打造。视觉基调取自日落暮光的暖色调——琥珀色主色搭配青色辅色，营造沉静而专业的电影感氛围。
 
-- **Foundations** -- amber/teal dual-accent palette, 9-stop scales per role, 4-stop radius, 5-level shadow, 8-step spacing, and a two-family type system (Outfit + Inter)
-- **Components** -- 6 documented components: Button, Card, Table, Chart, Navigation, Sidebar
-- **Previews** -- self-contained HTML preview cards for each component
+## 涵盖范围
 
-## CONTENT FUNDAMENTALS
+- **基础规范** — 琥珀/青色双主色调，9 级色阶，4 级圆角，5 级阴影，8 级间距，Outfit + Inter 双字体系统
+- **组件** — 6 个已定义组件：Button、Card、Table、Chart、Navigation、Sidebar
+- **预览** — 每个组件都有独立的 HTML 预览卡片
 
-### Voice & tone
+## 内容规范
 
-The system's visual language is warm but restrained. The earthy amber primary (`#e8922a`) signals approachability and energy without veering into playful territory, while the teal accent (`#14b8a6`) provides a cool counterpoint reserved for secondary actions and status indicators. Neutral tones (`#faf9f7` through `#4f4842`) carry a subtle warm undertone, deliberately avoiding the clinical feel of pure grey palettes. The typography pairing of Outfit (geometric, friendly) for headings and Inter (optimized for readability) for body text reinforces this balance: distinctive at a glance, comfortable over long sessions.
+### 语气与风格
 
-### When generating copy
+视觉语言温暖而克制。大地色系琥珀主色（`#e8922a`）传递亲和力与活力，但不轻浮；青色辅色（`#14b8a6`）作为冷色对比，用于次要操作和状态指示。中性色调（`#faf9f7` 至 `#4f4842`）带有微妙的暖色底调，刻意避免纯灰色系的临床感。排版选用 Outfit（几何感、友好）作为标题字体，Inter（可读性优化）作为正文字体，在视觉辨识度与长时间阅读舒适度之间取得平衡。
 
-- Use concise, professional language -- functional over decorative.
-- Button labels are action-oriented single verbs or short verb phrases (e.g. "搜索", "提交", "查看详情").
-- Status and trend indicators use percentage changes with directional arrows, not qualitative labels.
-- Section labels in navigation follow noun-first conventions; no emoji in product UI.
+### 文案指南
 
-## VISUAL FOUNDATIONS
+- 使用简洁、专业的语言——功能性优先于装饰性
+- 按钮标签使用动作为导向的单词或短语（如"搜索"、"提交"、"查看详情"）
+- 状态和趋势指标使用百分比变化与方向箭头，而非定性描述
+- 导航分区标签遵循"名词优先"原则，产品界面中不使用 emoji
 
-### Color
+## 视觉基础
 
-The brand primary is **`#e8922a`**, a mid-amber that sits at the 500-stop of a 9-step scale running from the near-white `#fef9f0` (50) through to the deep brown `#773f17` (900). This warm tone is the system's dominant accent: it drives CTA buttons, active sidebar items, focus rings, and chart-1 color. The 600-stop `#d47a1c` serves as the hover/pressed state, darkening just enough to register interaction without shifting hue.
+### 色彩
 
-The secondary accent is **`#14b8a6`**, a teal at the 500-stop of its own 9-step scale. It appears in avatar gradients, secondary chart colors, and accent-foreground contexts. Its 600-stop `#0d9488` marks the interactive hover tier. The two accents are deliberately complementary -- warm action + cool information -- and never compete for the same visual role.
+品牌主色为 **`#e8922a`**，一种中琥珀色，位于 9 级色阶的 500 档位，从近白色 `#fef9f0`（50）到深棕色 `#773f17`（900）。这是系统中最核心的强调色，驱动 CTA 按钮、侧边栏激活项、焦点环和主图表色。600 档 `#d47a1c` 用于悬停/按下状态，加深幅度刚好能感知交互而不偏移色相。
 
-Semantic colors follow industry conventions but are tuned to the palette's warmth. Success draws from green (`#16a34a` at 600), warning from amber-yellow (`#d97706` at 600), error from red (`#dc2626` at 600), and info from blue (`#2563eb` at 600). Each has a full 9-stop scale plus a matching 50-stop tint for container backgrounds (`--error-container`, `--color-primary-container`, etc.).
+辅色为 **`#14b8a6`**，一种青色，有独立的 9 级色阶。出现在头像渐变、次要图表色和强调前景等场景中。600 档 `#0d9488` 标记交互悬停层级。两个强调色刻意互补——暖色代表行动、冷色代表信息——从不争夺同一视觉角色。
 
-Neutrals form a 9-stop scale from `#faf9f7` (50) to `#4f4842` (900) with a noticeable warm bias -- compare 50-stop `#faf9f7` against a pure `#fafafa`. The working surface tokens cluster in the lighter end: background `#faf9f7`, card `#ffffff`, muted `#e8e5df`, border `#d5d0c8`. In dark mode, the background inverts to `#0f0e0d` with card at `#1a1918`, and the primary shifts up to `#f2ae52` for legibility against dark surfaces.
+语义色遵循行业惯例但经过暖色调校准。Success 来源于绿色（`#16a34a`，600 档），Warning 来源于琥珀黄（`#d97706`，600 档），Error 来源于红色（`#dc2626`，600 档），Info 来源于蓝色（`#2563eb`，600 档）。每种语义色都有完整的 9 级色阶以及对应的 50 档浅色调用于容器背景。
 
-Chart colors cycle through the five semantic families: amber, teal, blue, green, yellow -- enough to distinguish data series without clashing.
+中性色从 `#faf9f7`（50）到 `#4f4842`（900），共 9 级，带有明显的暖色偏移。工作面 Token 集中在浅色端：背景 `#faf9f7`、卡片 `#ffffff`、静音区 `#e8e5df`、边框 `#d5d0c8`。暗色模式下背景反转为 `#0f0e0d`，卡片为 `#1a1918`，主色提升为 `#f2ae52` 以保证深色背景上的可读性。
 
-### Typography
+### 排版
 
-The display and heading face is **Outfit**, a geometric sans-serif with a slightly rounded terminal treatment that echoes the palette's warmth. It carries weights 400-700 and handles all heading tiers from display (56px/700) down to h4 (20px/600). The display size runs at 56px with a tight 1.1 line-height and `-0.02em` letter-spacing, making it suitable for large numbers and hero metrics. Heading sizes descend: h1 at 40px/700/1.2, h2 at 32px/600/1.25, h3 at 24px/600/1.3, h4 at 20px/600/1.4.
+标题字体为 **Outfit**，一种几何无衬线字体，带有略微圆润的终端处理，呼应调色板的温暖感。字重覆盖 400-700，处理从 Display（56px/700）到 h4（20px/600）的所有标题层级。Display 尺寸运行于 56px，行高紧凑 1.1，字距 `-0.02em`，适合大数字和英雄指标展示。标题尺寸递减：h1 为 40px/700/1.2，h2 为 32px/600/1.25，h3 为 24px/600/1.3，h4 为 20px/600/1.4。
 
-Body text uses **Inter** at 16px/400/1.6 -- the standard workhorse for readability at paragraph length. A lead variant bumps to 18px/400/1.7 for introductory paragraphs. The eyebrow style sits at the opposite extreme: 11px/600/1.4 with `0.08em` letter-spacing and uppercase transform, serving as a label type for section headers and metadata tags.
+正文使用 **Inter**，16px/400/1.6——段落长度的标准可读性基准。Lead 变体提升至 18px/400/1.7，用于引导段落。Eyebrow 风格位于另一极端：11px/600/1.4，字距 `0.08em` 并大写转换，用作分区标题和元数据标签。
 
-Code and numeric data use **JetBrains Mono** at 14px/400/1.6. The `.test-price` class switches back to Outfit at 24px/700 with `font-variant-numeric: tabular-nums` to keep pricing and dashboard figures aligned.
+代码与数值数据使用 **JetBrains Mono**，14px/400/1.6。
 
-All three families are loaded via Google Fonts. If Outfit is unavailable, fall back to `sans-serif` (the browser's default geometric sans will be a reasonable match). If Inter is unavailable, the `sans-serif` fallback applies similarly. For CJK contexts, the system font stack should resolve to PingFang SC / Noto Sans SC / Microsoft YaHei automatically, though this has not been explicitly tested.
+三款字体均通过 Google Fonts 加载。如 Outfit 不可用，回退至 `sans-serif`。CJK 上下文中，系统字体栈应自动解析为 PingFang SC / Noto Sans SC / Microsoft YaHei。
 
-### Spacing
+### 间距
 
-The spacing scale is an 8-step, 4px-base progression: `--space-1` (4px), `--space-2` (8px), `--space-3` (12px), `--space-4` (16px), `--space-5` (24px), `--space-6` (32px), `--space-7` (48px), `--space-8` (64px). Most component internals live in the 8-24px range: button padding uses space-2/space-4 (sm) through space-3/space-6 (lg), card body padding is space-4, and the topbar uses space-8 for horizontal padding. Input height is fixed at 38px.
+间距体系为 8 级、4px 基准递进：`--space-1`（4px）、`--space-2`（8px）、`--space-3`（12px）、`--space-4`（16px）、`--space-5`（24px）、`--space-6`（32px）、`--space-7`（48px）、`--space-8`（64px）。大部分组件内部间距集中在 8-24px 范围。
 
-### Radius
+### 圆角
 
-The system uses four radius tokens plus a `--radius-full: 9999px` for pill shapes. Small (6px) applies to compact controls like small buttons and sidebar items. Medium (8px) is the default for standard buttons, stat cards, info cards, and table wrappers. Large (12px) handles poster cards and the sidebar container itself. Extra-large (16px) is available but not actively applied in the current component set. The pill radius appears on tags and avatar circles.
+系统使用 4 个圆角 Token 加一个 `--radius-full: 9999px` 用于胶囊形状。小（6px）用于紧凑控件，中（8px）为标准按钮、统计卡和信息卡的默认值，大（12px）用于海报卡片和侧边栏容器，超大（16px）已定义但当前未直接应用。
 
-### Shadow / Elevation
+### 阴影 / 层级
 
-Five shadow layers provide a clear elevation hierarchy. Level 1 (`--shadow-1`) is a barely-perceptible double-layer shadow for resting cards; level 2 (`--shadow-2`) adds depth for hover states on cards and stat rails. Level 3 (`--shadow-3`) introduces float elevation for popovers and dropdowns. Level 4 (`--shadow-4`) is the modal shadow, and level 5 (`--shadow-5`) is reserved for overlays and dramatic emphasis. All shadows use the foreground color `rgba(79,72,66,...)` as their base, which keeps them warm-toned rather than neutral black. In dark mode the shadow color switches to pure black with higher opacity values.
+5 级阴影提供清晰的层级层次。第 1 级为几乎不可见的双层阴影，用于静止卡片；第 2 级增加深度用于卡片悬停状态；第 3 级引入浮起效果用于弹出层和下拉菜单；第 4 级为模态框阴影；第 5 级保留给覆盖层和戏剧性强调。所有阴影使用前景色 `rgba(79,72,66,...)` 作为基础色，保持暖色调而非中性黑色。
 
-### Borders, backgrounds, animation
+### 边框、背景、动画
 
-Borders are thin and utilitarian: the default border token is `#d5d0c8` (neutral-300), with variant borders at `#e8e5df` (neutral-200) for subtler dividers. The topbar uses a translucent rgba border (`rgba(255,255,255,0.08)`) over its blur-glass backdrop. Transition timing is consistently `0.15s` for color and filter changes, giving interactions a responsive but non-distracting feel. The `:active` state on buttons uses `brightness(0.92)` rather than a color shift, and hover states on cards use `brightness(0.97)` -- both subtle enough to avoid visual noise in dense dashboards.
+边框薄而实用：默认边框为 `#d5d0c8`（neutral-300），细微分割线为 `#e8e5df`（neutral-200）。顶栏使用半透明 rgba 边框配合模糊玻璃背景。过渡时间统一为 `0.15s`，给予交互响应感但不过度分散注意力。按钮按下状态使用 `brightness(0.92)` 而非颜色偏移，卡片悬停使用 `brightness(0.97)`——都足够微妙，避免在密集仪表盘中产生视觉噪音。
 
-## Component Patterns
+## 组件概览
 
-| Component | Preview | Contract | CSS Source | Key Facts | Key Insight |
-|---|---|---|---|---|---|
-| Button | `preview/component-button.html` | `components/button.json` | `components.css` "Button" | 3 variants (solid/ghost/outline), 3 sizes (sm 32px / md 40px / lg 48px), disabled state | Hover uses brightness filter, not color swap -- keeps amber tone stable |
-| Card | `preview/component-card.html` | `components/card.json` | `components.css` "Card" | 3 variants (poster/stat/info), poster has 2:3 image area | Cinematic shadow layering; stat cards use Outfit for large numbers |
-| Table | `preview/component-table.html` | `components/table.json` | `components.css` "Table" | 2 densities (default 48px / compact 36px row height) | Row hover via brightness filter, consistent with card pattern |
-| Chart | `preview/component-chart.html` | `components/chart.json` | `components.css` "Chart" | 2 variants (stat-card / sparkline-card) | Sparkline is a placeholder 40px block; stat-value uses h2 scale |
-| Navigation | `preview/component-navigation.html` | `components/navigation.json` | `components.css` "Navigation" | 2 variants (topbar / breadcrumb), blur-glass topbar | Dark-mode glass effect with saturated backdrop blur |
-| Sidebar | `preview/component-sidebar.html` | `components/sidebar.json` | `components.css` "Sidebar" | 2 variants (nav-sidebar / filter-sidebar), 240/260px width | Active item uses primary-container bg, not a left-border indicator |
+| 组件 | 预览 | 契约 | 关键信息 |
+|---|---|---|---|
+| Button | `preview/component-button.html` | `components/button.json` | 3 种变体（solid/ghost/outline），3 种尺寸（sm 32px / md 40px / lg 48px） |
+| Card | `preview/component-card.html` | `components/card.json` | 3 种变体（poster/stat/info），海报卡带 2:3 图片区域 |
+| Table | `preview/component-table.html` | `components/table.json` | 2 种密度（默认 48px / 紧凑 36px 行高） |
+| Chart | `preview/component-chart.html` | `components/chart.json` | 2 种变体（统计卡 / 迷你趋势卡） |
+| Navigation | `preview/component-navigation.html` | `components/navigation.json` | 2 种变体（顶栏 / 面包屑），模糊玻璃顶栏 |
+| Sidebar | `preview/component-sidebar.html` | `components/sidebar.json` | 2 种变体（导航侧栏 / 筛选面板），240/260px 宽度 |
 
-## Index
+## 文件索引
 
-- `README.md` -- this file
-- `colors_and_type.css` -- all CSS custom properties for color, type, radius, shadow, spacing (light + dark)
-- `components.css` -- aggregated component CSS extracted from preview pages
-- `css.json` -- structured JSON token representation
-- `preview/` -- self-contained HTML preview cards for each component
-- `components/` -- per-component contract JSON (slug.json) and index
+- `colors_and_type.css` — 所有 CSS 自定义属性（色彩、排版、圆角、阴影、间距，含明暗主题）
+- `css.json` — 结构化 JSON Token 数据
+- `components.css` — 从预览页提取的聚合组件 CSS
+- `preview/` — 每个组件的独立 HTML 预览卡片
+- `components/` — 组件契约 JSON 及索引
 
-## Caveats / known substitutions
+## 已知限制
 
-1. **BrandFile was empty** -- no personality, language, uiCopySamples, or kitType were available from the upstream brand analysis phase. All brand narrative in this document is inferred from the CSS token structure (color relationships, font choices, naming conventions). Treat voice/tone guidance as directional, not authoritative.
-
-2. **Outfit and Inter rely on Google Fonts CDN** -- these are not bundled locally. Offline use will fall back to `sans-serif`. The display-to-heading-to-body hierarchy will still function, but the geometric warmth of Outfit and the legibility optimization of Inter will be lost. For production, consider self-hosting or substituting with a local font that matches Outfit's rounded terminals (e.g. Nunito as a closer match than the system default sans-serif).
-
-3. **Chart component is confidence `low`** -- the sparkline implementation is a placeholder (`<span class="sparkline">` with a 40px height block, no actual SVG rendering). Any real chart integration will need a separate charting library. The stat-card variant is functional as a layout pattern.
-
-4. **Dark mode shadows are untested in this document** -- the token values for dark shadows exist in the CSS and use higher-opacity black, but no dark-mode preview HTML was generated. Verify contrast and elevation perception in dark contexts before shipping.
-
-5. **No icon assets are bundled** -- component previews reference inline SVG symbols, but no standalone icon SVGs exist in an `assets/icons/` directory. If icons are needed for production, they must be sourced separately.
+1. **字体依赖 Google Fonts CDN** — 离线使用将回退至 `sans-serif`。生产环境建议自行托管
+2. **Chart 组件置信度较低** — 迷你趋势图为占位实现，实际图表集成需要额外的图表库
+3. **暗色模式阴影未经实际验证** — 暗色阴影 Token 值已存在于 CSS 中，但没有生成暗色模式预览 HTML
+4. **未捆绑图标资源** — 组件预览使用内联 SVG，但没有独立的图标资源目录

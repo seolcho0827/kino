@@ -57,8 +57,8 @@ kino/
 │       │   └── component-{slug}.html # 组件预览卡片
 │       ├── ui_kits/
 │       │   └── dashboard/index.html # 交互式 UI Kit
-│       ├── README.md                # 风格文档（英文）
-│       ├── README_CN.md             # 风格文档（中文）
+│       ├── README.md                # 风格文档（中文）
+│       ├── README_EN.md             # 风格文档（英文）
 │       └── SKILL.md                 # AI 可消费的技能卡片
 └── shared/                          # (计划中) 公共资源
 ```

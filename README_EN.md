@@ -57,8 +57,8 @@ kino/
 │       │   └── component-{slug}.html # Component preview cards
 │       ├── ui_kits/
 │       │   └── dashboard/index.html # Interactive UI Kit
-│       ├── README.md                # Style documentation (English)
-│       ├── README_CN.md             # Style documentation (Chinese)
+│       ├── README.md                # Style documentation (Chinese)
+│       ├── README_EN.md             # Style documentation (English)
 │       └── SKILL.md                 # AI-consumable skill card
 └── shared/                          # (planned) Common assets
 ```
