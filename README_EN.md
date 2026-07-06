@@ -6,7 +6,7 @@
 
 <p align="center">
   Weather-themed design system monorepo<br>
-  English | <a href="README.md">中文</a>
+  <a href="README.md">中文</a> | English
 </p>
 
 ---
@@ -37,7 +37,7 @@ The first release, **Twilight**, is a dark cinematic dashboard design system tai
 **Twilight — Dashboard**
 
 <p align="center">
-  <img src="assets/uikit-dashboard.png" alt="Twilight Dashboard UI Kit" width="640">
+  <img src="assets/uikit-dashboard.jpg" alt="Twilight Dashboard UI Kit" width="640">
 </p>
 
 ## Repository Structure
