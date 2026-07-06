@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+body { margin: 0; padding: var(--space-3); background: var(--color-background); font-family: var(--font-family-base); color: var(--color-on-surface); }
+.row { display: flex; gap: var(--space-4); align-items: flex-start; margin-bottom: var(--space-2); flex-wrap: wrap; }
+.label { font-size: var(--font-size-eyebrow); font-weight: var(--font-weight-eyebrow); color: var(--color-muted-foreground); text-transform: uppercase; letter-spacing: 0.08em; min-width: 92px; flex-shrink: 0; line-height: 1; padding-top: var(--space-2); }
+.divider { border: none; border-top: 1px solid var(--color-outline-variant); margin: var(--space-2) 0; }
+
+/* @component-css-start */
+.poster-grid { display: grid; grid-template-columns: repeat(3, 180px); gap: var(--space-4); }
+.card-poster { background: var(--color-card); border-radius: var(--radius-lg); box-shadow: var(--shadow-2); overflow: hidden; transition: filter .15s; cursor: default; }
+.card-poster:hover { filter: brightness(0.97); }
+.card-poster-img { width: 100%; aspect-ratio: 2/3; display: block; }
+.poster-img-1 { background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); }
+.poster-img-2 { background: linear-gradient(135deg, #2d1b69, #11001c, #3c1642); }
+.poster-img-3 { background: linear-gradient(135deg, #3d2c1a, #5c3d1e, #8b6914); }
+.card-poster-body { padding: var(--space-4); }
+.card-poster-title { font-family: var(--font-heading); font-size: var(--font-size-h4); font-weight: var(--font-weight-h4); color: var(--color-on-surface); line-height: var(--line-height-h4); margin: 0 0 var(--space-1) 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-poster-meta { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-caption); color: var(--color-muted-foreground); margin: 0; }
+.card-poster-tags { display: flex; gap: var(--space-1); margin-top: var(--space-2); flex-wrap: wrap; }
+.card-tag { font-size: var(--font-size-caption); color: var(--color-on-surface-variant); background: var(--color-surface-container-low); padding: 2px var(--space-2); border-radius: var(--radius-full); white-space: nowrap; }
+.stat-rail { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.card-stat { background: var(--color-card); border-radius: var(--radius-md); box-shadow: var(--shadow-1); padding: var(--space-5); width: 180px; flex-shrink: 0; display: flex; flex-direction: column; gap: var(--space-3); transition: filter .15s; cursor: default; }
+.card-stat:hover { filter: brightness(0.97); }
+.card-stat-value { font-family: var(--font-display); font-size: var(--font-size-h3); font-weight: var(--font-weight-display); color: var(--color-on-surface); line-height: 1; margin: 0; }
+.card-stat-label { font-size: var(--font-size-caption); color: var(--color-muted-foreground); margin: 0; white-space: nowrap; }
+.card-stat-trend { display: inline-flex; align-items: center; gap: 4px; font-size: var(--font-size-caption); font-weight: var(--font-weight-eyebrow); white-space: nowrap; }
+.trend-up { color: var(--color-success); }
+.trend-down { color: var(--color-error); }
+.info-rail { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.card-info { background: var(--color-card); border-radius: var(--radius-md); box-shadow: var(--shadow-1); padding: var(--space-5); width: 240px; flex-shrink: 0; display: flex; gap: var(--space-4); align-items: center; transition: filter .15s; cursor: default; }
+.card-info:hover { filter: brightness(0.97); }
+.card-info-avatar { width: 48px; height: 48px; border-radius: var(--radius-full); flex-shrink: 0; overflow: hidden; }
+.avatar-1 { background: linear-gradient(135deg, var(--color-primary), var(--accent)); }
+.avatar-2 { background: linear-gradient(135deg, var(--test-primary-400), var(--test-primary-700)); }
+.avatar-3 { background: linear-gradient(135deg, var(--accent), var(--test-info-600)); }
+.card-info-body { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.card-info-name { font-family: var(--font-heading); font-size: var(--font-size-body); font-weight: var(--font-weight-h4); color: var(--color-on-surface); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-info-role { font-size: var(--font-size-caption); color: var(--color-muted-foreground); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-info-detail { font-size: var(--font-size-caption); color: var(--color-on-surface-variant); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* @component-css-end */
+</style>
+</head>
+<body>
+<div class="row">
+  <span class="label">海报卡片</span>
+  <div class="poster-grid">
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-1"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">星际穿越</p>
+        <p class="card-poster-meta">2014 · 8.7</p>
+        <div class="card-poster-tags"><span class="card-tag">科幻</span><span class="card-tag">冒险</span></div>
+      </div>
+    </div>
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-2"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">盗梦空间</p>
+        <p class="card-poster-meta">2010 · 9.3</p>
+        <div class="card-poster-tags"><span class="card-tag">悬疑</span><span class="card-tag">动作</span></div>
+      </div>
+    </div>
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-3"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">沙丘</p>
+        <p class="card-poster-meta">2021 · 8.0</p>
+        <div class="card-poster-tags"><span class="card-tag">科幻</span><span class="card-tag">史诗</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+<div class="row">
+  <span class="label">指标卡片</span>
+  <div class="stat-rail">
+    <div class="card-stat">
+      <span class="card-stat-label">月活用户</span>
+      <p class="card-stat-value">12,480</p>
+      <span class="card-stat-trend trend-up">+12.5%</span>
+    </div>
+    <div class="card-stat">
+      <span class="card-stat-label">总收入</span>
+      <p class="card-stat-value">¥84.2K</p>
+      <span class="card-stat-trend trend-up">+8.3%</span>
+    </div>
+    <div class="card-stat">
+      <span class="card-stat-label">转化率</span>
+      <p class="card-stat-value">3.6%</p>
+      <span class="card-stat-trend trend-down">-1.2%</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="label">信息卡片</span>
+  <div class="info-rail">
+    <div class="card-info">
+      <div class="card-info-avatar avatar-1"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">张伟</p>
+        <p class="card-info-role">导演</p>
+        <p class="card-info-detail">代表作: 星际穿越</p>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-info-avatar avatar-2"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">李娜</p>
+        <p class="card-info-role">主演</p>
+        <p class="card-info-detail">代表作: 盗梦空间</p>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-info-avatar avatar-3"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">王磊</p>
+        <p class="card-info-role">制片人</p>
+        <p class="card-info-detail">代表作: 沙丘</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

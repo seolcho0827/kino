@@ -1,0 +1,49 @@
+{
+  "slug": "navigation",
+  "schemaVersion": 2,
+  "name": "Navigation",
+  "category": "navigation",
+  "sourceKind": "from-scratch",
+  "confidence": "medium",
+  "semanticTypeCandidates": [
+    { "type": "navigation", "evidence": "Top-level navigation bar for main site sections" }
+  ],
+  "variantDimensions": [
+    { "name": "variant", "values": ["topbar", "breadcrumb"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "topbar",
+      "whySelected": "Primary top navigation with logo and links",
+      "traits": {
+        "bg": "rgba(28,28,30,0.72)",
+        "backdropFilter": "saturate(180%) blur(20px)",
+        "height": "var(--size-nav-height)",
+        "paddingInline": "var(--space-8)",
+        "borderBottom": "1px solid rgba(255,255,255,0.08)",
+        "linkColor": "var(--color-muted-foreground)",
+        "activeColor": "var(--color-primary)"
+      },
+      "childrenDigest": ["logo", "nav links (Movies, TV, People, Rankings)", "search icon", "user avatar"]
+    },
+    {
+      "id": "breadcrumb",
+      "whySelected": "Secondary hierarchical path navigation",
+      "traits": {
+        "bg": "transparent",
+        "fontSize": "var(--type-caption)",
+        "separatorColor": "var(--color-muted-foreground)",
+        "itemSpacing": "var(--space-2)"
+      },
+      "childrenDigest": ["Home", "Movies", "Action", "current page"]
+    }
+  ],
+  "anatomy": ["logo/brand", "nav links", "actions area (search, user)"],
+  "structurePatterns": ["horizontal top bar with blur-glass effect"],
+  "usageHints": {
+    "priorityHint": "high",
+    "context": "Primary site navigation, sub-page breadcrumb trails"
+  },
+  "doNotInvent": ["mega menu dropdowns", "mobile hamburger animation", "sticky-to-shrink nav"],
+  "unknowns": ["active link indicator style"]
+}

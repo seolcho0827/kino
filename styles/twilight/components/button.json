@@ -1,0 +1,78 @@
+{
+  "slug": "button",
+  "schemaVersion": 2,
+  "name": "Button",
+  "category": "actions",
+  "sourceKind": "from-scratch",
+  "confidence": "medium",
+  "semanticTypeCandidates": [
+    { "type": "button", "evidence": "Primary action trigger for interactions like search, submit, filter" }
+  ],
+  "variantDimensions": [
+    { "name": "variant", "values": ["solid", "ghost", "outline"] },
+    { "name": "size", "values": ["sm", "md", "lg"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "solid-md",
+      "whySelected": "Default primary action button",
+      "traits": {
+        "bg": "var(--color-primary)",
+        "color": "#ffffff",
+        "borderRadius": "var(--radius-md)",
+        "paddingInline": "var(--space-6)",
+        "paddingBlock": "var(--space-2)",
+        "fontSize": "var(--type-body)",
+        "fontWeight": "500"
+      },
+      "childrenDigest": ["Search", "Submit", "View Details"]
+    },
+    {
+      "id": "ghost-md",
+      "whySelected": "Minimal secondary action",
+      "traits": {
+        "bg": "transparent",
+        "color": "var(--color-primary)",
+        "borderRadius": "var(--radius-md)",
+        "paddingInline": "var(--space-6)",
+        "paddingBlock": "var(--space-2)",
+        "hoverBg": "rgba(255,255,255,0.06)"
+      },
+      "childrenDigest": ["Cancel", "More", "Filter"]
+    },
+    {
+      "id": "outline-md",
+      "whySelected": "Tertiary option with border emphasis",
+      "traits": {
+        "bg": "transparent",
+        "color": "var(--color-primary)",
+        "border": "1px solid var(--border)",
+        "borderRadius": "var(--radius-md)",
+        "paddingInline": "var(--space-6)",
+        "paddingBlock": "var(--space-2)"
+      },
+      "childrenDigest": ["Export", "Settings"]
+    },
+    {
+      "id": "solid-sm",
+      "whySelected": "Compact size for dense layouts",
+      "traits": {
+        "bg": "var(--color-primary)",
+        "color": "#ffffff",
+        "borderRadius": "var(--radius-sm)",
+        "paddingInline": "var(--space-4)",
+        "paddingBlock": "var(--space-1)",
+        "fontSize": "var(--type-caption)"
+      },
+      "childrenDigest": ["Add", "Edit", "Tag"]
+    }
+  ],
+  "anatomy": ["label text", "optional icon (leading/trailing)"],
+  "structurePatterns": ["single-line inline", "stacked full-width"],
+  "usageHints": {
+    "priorityHint": "high",
+    "context": "Dashboard actions, filter panels, form submissions"
+  },
+  "doNotInvent": ["icon-only toggle buttons", "floating action buttons", "button groups with connected borders"],
+  "unknowns": ["exact hover transition duration", "focus ring style"]
+}

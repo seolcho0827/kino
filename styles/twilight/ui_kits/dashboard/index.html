@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影视数据库 — Dashboard UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../components.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style>
+body{margin:0;background:var(--background);color:var(--foreground);font-family:var(--font-body);font-size:var(--font-size-body);line-height:var(--line-height-body);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+
+/* === UIKit Layout Shell === */
+.uikit-shell{width:100%;max-width:1184px;margin:0 auto;overflow:hidden;display:grid;grid-template-columns:var(--uikit-sidebar-w, 240px) minmax(0,1fr);gap:0;min-height:100vh}
+.uikit-sidebar,.uikit-main,.uikit-toolbar{min-width:0}
+.uikit-sidebar{overflow:hidden;max-width:100%}
+[data-component]{min-width:0;max-width:100%;overflow:hidden}
+.uikit-toolbar{display:flex;align-items:center;gap:var(--space-2)}
+.uikit-responsive-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+.uikit-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+.uikit-truncate{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.uikit-nowrap{white-space:nowrap;flex-shrink:0}
+.uikit-action-cell{display:flex;align-items:center;gap:8px;min-width:0;max-width:160px;overflow:hidden}
+.uikit-action{min-width:0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* === Page Layout === */
+.page-sidebar{background:var(--secondary);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:var(--space-4) 0}
+.page-main{display:flex;flex-direction:column;overflow:hidden}
+.page-topbar{display:flex;align-items:center;justify-content:space-between;padding:var(--space-3) var(--space-6);border-bottom:1px solid var(--border);background:var(--card);min-height:56px}
+.page-body{flex:1;overflow-y:auto;padding:var(--space-6)}
+.page-breadcrumb{margin-bottom:var(--space-5)}
+
+/* === Stat Grid === */
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-4);margin-bottom:var(--space-6)}
+.stat-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* === Bar Chart CSS-only === */
+.bar-chart{display:flex;align-items:flex-end;gap:var(--space-2);height:120px;padding:var(--space-4);background:var(--card);border-radius:var(--radius-md);box-shadow:var(--shadow-1)}
+.bar-chart-bar{flex:1;min-width:0;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:filter .15s}
+.bar-chart-bar:hover{filter:brightness(1.15)}
+.barH10{height:10%}.barH20{height:20%}.barH25{height:25%}.barH30{height:30%}.barH40{height:40%}.barH45{height:45%}.barH50{height:50%}.barH55{height:55%}.barH60{height:60%}.barH65{height:65%}.barH70{height:70%}.barH75{height:75%}.barH80{height:80%}.barH85{height:85%}.barH90{height:90%}.barH95{height:95%}
+
+/* === Poster Grid === */
+.poster-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+
+/* === Info Rail === */
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
+
+/* === Section === */
+.section-title{font-family:var(--font-heading);font-size:var(--font-size-h3);font-weight:var(--font-weight-h3);color:var(--foreground);margin:0 0 var(--space-4) 0;word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+.section-subtitle{font-size:var(--font-size-lead);color:var(--muted-foreground);margin:0 0 var(--space-5) 0}
+
+/* === Chart Legend === */
+.chart-legend{display:flex;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-2)}
+.chart-legend-item{display:flex;align-items:center;gap:var(--space-1);font-size:var(--font-size-caption);color:var(--muted-foreground)}
+.chart-legend-dot{width:8px;height:8px;border-radius:var(--radius-full);flex-shrink:0}
+
+/* === Screen transitions === */
+.screen-fade-enter{opacity:0;transform:translateY(8px)}
+.screen-fade-active{opacity:1;transform:translateY(0);transition:opacity .24s ease,transform .24s ease}
+
+/* === Disabled button state === */
+.btn[disabled]{opacity:0.4;cursor:not-allowed;pointer-events:none}
+
+/* === Sparkline placeholder === */
+.sparkline-wrap{display:flex;align-items:flex-end;gap:2px;height:40px}
+.sparkline-bar{width:4px;border-radius:2px;flex-shrink:0}
+
+/* === Rating badge === */
+.rating-badge{display:inline-flex;align-items:center;gap:var(--space-1);background:var(--primary);color:#ffffff;font-size:var(--font-size-caption);font-weight:var(--font-weight-eyebrow);padding:2px var(--space-2);border-radius:var(--radius-sm);font-variant-numeric:tabular-nums}
+
+/* === Responsive === */
+@media(max-width:900px){
+  .uikit-shell{grid-template-columns:minmax(0,1fr)}
+  .uikit-responsive-grid{grid-template-columns:minmax(0,1fr)}
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .poster-grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .info-grid{grid-template-columns:minmax(0,1fr)}
+  .page-sidebar{display:none}
+}
+@media(max-width:640px){
+  .uikit-toolbar{flex-direction:column;align-items:stretch}
+  .uikit-responsive-grid{grid-template-columns:minmax(0,1fr)}
+  .stat-grid{grid-template-columns:minmax(0,1fr)}
+  .poster-grid-3{grid-template-columns:minmax(0,1fr)}
+  .page-body{padding:var(--space-4)}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useCallback } = React;
+
+/* ───────── Sidebar Data ───────── */
+const sidebarSections = [
+  { title: '主要功能', items: [
+    { icon: 'layout-dashboard', label: '数据总览', screen: 'overview', active: true },
+    { icon: 'film', label: '热门影视', screen: 'movies' },
+    { icon: 'users', label: '演员库', screen: 'people' },
+  ]},
+  { title: '管理', items: [
+    { icon: 'star', label: '排行榜', screen: 'ranking' },
+    { icon: 'settings', label: '系统设置', screen: 'settings' },
+  ]}
+];
+
+/* ───────── Mock Data ───────── */
+const statCards = [
+  { value: '12,847', label: '收录作品', change: '+8.3%', up: true },
+  { value: '4,312', label: '本月新增', change: '+12.5%', up: true },
+  { value: '8.6', label: '平均评分', change: '-0.2', up: false },
+  { value: '2,156', label: '活跃演员', change: '+3.1%', up: true },
+];
+
+const movies = [
+  { title: '千与千寻', year: '2001', rating: '9.4', genre: ['动画','奇幻'], gradient: 'linear-gradient(135deg, #1a3a5c, #2d6a9f, #4ecdc4)' },
+  { title: '霸王别姬', year: '1993', rating: '9.6', genre: ['剧情','爱情'], gradient: 'linear-gradient(135deg, #5c1a1a, #9f2d2d, #c94e4e)' },
+  { title: '花样年华', year: '2000', rating: '8.7', genre: ['剧情','爱情'], gradient: 'linear-gradient(135deg, #3d2c1a, #8b6914, #c9a84e)' },
+  { title: '寄生虫', year: '2019', rating: '8.8', genre: ['剧情','悬疑'], gradient: 'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)' },
+  { title: '东京物语', year: '1953', rating: '9.2', genre: ['剧情','家庭'], gradient: 'linear-gradient(135deg, #2d1b69, #3c1642, #6b3fa0)' },
+  { title: '燃烧女子的肖像', year: '2019', rating: '8.6', genre: ['剧情','爱情'], gradient: 'linear-gradient(135deg, #4a2040, #7a3050, #a04060)' },
+];
+
+const people = [
+  { name: '梁朝伟', role: '演员', known: '花样年华、无间道', avatar: 'avatar-1' },
+  { name: '周迅', role: '演员', known: '如果·爱、李米的猜想', avatar: 'avatar-2' },
+  { name: '汤唯', role: '演员', known: '色·戒、晚秋', avatar: 'avatar-3' },
+  { name: '巩俐', role: '演员', known: '霸王别姬、活着', avatar: 'avatar-1' },
+  { name: '金敏喜', role: '演员', known: '小姐、独自在夜晚的海边', avatar: 'avatar-2' },
+  { name: '宋康昊', role: '演员', known: '寄生虫、辩护人', avatar: 'avatar-3' },
+];
+
+const tableRows = [
+  { title: '千与千寻', director: '宫崎骏', country: '日本', year: '2001', rating: '9.4', votes: '1.2M', status: '已上映' },
+  { title: '霸王别姬', director: '陈凯歌', country: '中国', year: '1993', rating: '9.6', votes: '980K', status: '已上映' },
+  { title: '寄生虫', director: '奉俊昊', country: '韩国', year: '2019', rating: '8.8', votes: '860K', status: '已上映' },
+  { title: '花样年华', director: '王家卫', country: '中国香港', year: '2000', rating: '8.7', votes: '720K', status: '已上映' },
+  { title: '燃烧女子的肖像', director: '瑟琳·席安玛', country: '法国', year: '2019', rating: '8.6', votes: '340K', status: '已上映' },
+  { title: '东京物语', director: '小津安二郎', country: '日本', year: '1953', rating: '9.2', votes: '180K', status: '已上映' },
+  { title: '下一站天国', director: '是枝裕和', country: '日本', year: '1998', rating: '8.3', votes: '120K', status: '已上映' },
+];
+
+const barData = [
+  { h: 'barH55', color: 'var(--chart-1)' },
+  { h: 'barH70', color: 'var(--chart-1)' },
+  { h: 'barH85', color: 'var(--chart-1)' },
+  { h: 'barH65', color: 'var(--chart-1)' },
+  { h: 'barH90', color: 'var(--chart-1)' },
+  { h: 'barH75', color: 'var(--chart-1)' },
+  { h: 'barH95', color: 'var(--chart-2)' },
+  { h: 'barH80', color: 'var(--chart-1)' },
+  { h: 'barH60', color: 'var(--chart-1)' },
+  { h: 'barH45', color: 'var(--chart-1)' },
+  { h: 'barH50', color: 'var(--chart-1)' },
+  { h: 'barH30', color: 'var(--chart-1)' },
+];
+
+const sparklineData = [20,35,28,45,38,55,48,62,58,70,65,78];
+const sparkHeights = [20,35,28,45,38,55,48,62,58,70,65,78];
+
+/* ───────── Sparkline Component ───────── */
+function Sparkline() {
+  const maxH = Math.max(...sparkHeights);
+  return (
+    <div className="sparkline-wrap">
+      {sparkHeights.map((h, i) => (
+        <div key={i} className="sparkline-bar" style={{ height: (h / maxH * 100) + '%', background: 'var(--chart-2)', opacity: 0.4 + (i / sparkHeights.length) * 0.6 }} />
+      ))}
+    </div>
+  );
+}
+
+/* ───────── Sidebar Component ───────── */
+function AppSidebar({ current, onNav }) {
+  return (
+    <aside className="page-sidebar uikit-sidebar" data-component="sidebar">
+      <div className="sidebar-brand">
+        <div className="sidebar-brand-icon">
+          <i data-lucide="clapperboard" style={{width:16,height:16,color:'#fff'}}></i>
+        </div>
+        <span className="sidebar-brand-name">影视数据库</span>
+      </div>
+      <nav className="sidebar-nav">
+        {sidebarSections.map((sec, si) => (
+          <React.Fragment key={si}>
+            <div className="sidebar-section-title">{sec.title}</div>
+            {sec.items.map((item, ii) => (
+              <a
+                key={ii}
+                className={`sidebar-item ${current === item.screen ? 'active' : ''}`}
+                onClick={() => onNav(item.screen)}
+                style={{ textDecoration: 'none' }}
+              >
+                <span className="sidebar-item-icon">
+                  <i data-lucide={item.icon} style={{width:20,height:20}}></i>
+                </span>
+                <span className="uikit-truncate">{item.label}</span>
+              </a>
+            ))}
+          </React.Fragment>
+        ))}
+      </nav>
+    </aside>
+  );
+}
+
+/* ───────── Topbar Component ───────── */
+function Topbar() {
+  return (
+    <header className="page-topbar uikit-toolbar" data-component="navigation">
+      <nav className="nav-breadcrumb">
+        <span className="nav-breadcrumb__item uikit-truncate">首页</span>
+        <span className="nav-breadcrumb__sep">/</span>
+        <span className="nav-breadcrumb__item nav-breadcrumb__item--current uikit-truncate">数据总览</span>
+      </nav>
+      <div className="nav-topbar__actions">
+        <i data-lucide="search" style={{width:18,height:18,color:'var(--muted-foreground)',cursor:'pointer'}}></i>
+        <i data-lucide="bell" style={{width:18,height:18,color:'var(--muted-foreground)',cursor:'pointer'}}></i>
+        <div className="nav-avatar">林</div>
+      </div>
+    </header>
+  );
+}
+
+/* ───────── Overview Screen ───────── */
+function OverviewScreen() {
+  return (
+    <div className="screen-fade-active">
+      <div style={{ marginBottom: 'var(--space-6)' }}>
+        <h2 className="section-title">数据总览</h2>
+        <p className="section-subtitle">东亚影视作品收录与趋势概览</p>
+      </div>
+
+      {/* Stat Cards */}
+      <div className="stat-grid" data-component="chart">
+        {statCards.map((s, i) => (
+          <div className="card-stat" key={i}>
+            <span className="card-stat-value">{s.value}</span>
+            <span className="card-stat-label">{s.label}</span>
+            <span className={`card-stat-trend ${s.up ? 'trend-up' : 'trend-down'}`}>
+              <i data-lucide={s.up ? 'trending-up' : 'trending-down'} style={{width:12,height:12}}></i>
+              {s.change}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Bar Chart + Sparkline */}
+      <div className="uikit-responsive-grid" style={{ marginBottom: 'var(--space-6)' }}>
+        <div data-component="chart" style={{ background: 'var(--card)', borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-1)', padding: 'var(--space-5)', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ fontSize: 'var(--font-size-body)', fontWeight: 500, color: 'var(--foreground)' }}>月度新增作品</span>
+            <span className="uikit-nowrap" style={{ fontSize: 'var(--font-size-caption)', color: 'var(--muted-foreground)' }}>2024 年 1–12 月</span>
+          </div>
+          <div className="bar-chart">
+            {barData.map((b, i) => (
+              <div key={i} className={`bar-chart-bar ${b.h}`} style={{ background: b.color }} />
+            ))}
+          </div>
+          <div className="chart-legend">
+            <div className="chart-legend-item">
+              <div className="chart-legend-dot" style={{ background: 'var(--chart-1)' }}></div>
+              <span>电影</span>
+            </div>
+            <div className="chart-legend-item">
+              <div className="chart-legend-dot" style={{ background: 'var(--chart-2)' }}></div>
+              <span>电视剧</span>
+            </div>
+          </div>
+        </div>
+        <div data-component="chart" className="sparkline-card" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+          <span className="stat-label">评分趋势 (近 12 月)</span>
+          <Sparkline />
+          <span className="stat-change up" style={{ marginTop: 'auto' }}>
+            <i data-lucide="trending-up" style={{width:12,height:12}}></i>
+            +0.3
+          </span>
+        </div>
+      </div>
+
+      {/* Table */}
+      <div data-component="table" className="uikit-table-wrap" style={{ borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-1)', overflow: 'hidden' }}>
+        <table className="tbl">
+          <thead>
+            <tr>
+              <th>作品名称</th>
+              <th>导演</th>
+              <th>地区</th>
+              <th>年份</th>
+              <th>评分</th>
+              <th>投票数</th>
+              <th className="uikit-action-cell">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableRows.slice(0, 7).map((r, i) => (
+              <tr key={i}>
+                <td style={{ color: 'var(--foreground)', fontWeight: 500 }} className="uikit-truncate">{r.title}</td>
+                <td className="uikit-truncate">{r.director}</td>
+                <td className="uikit-truncate">{r.country}</td>
+                <td className="uikit-nowrap">{r.year}</td>
+                <td className="uikit-nowrap"><span className="rating-badge">{r.rating}</span></td>
+                <td className="uikit-nowrap" style={{ fontVariantNumeric: 'tabular-nums' }}>{r.votes}</td>
+                <td className="uikit-action-cell">
+                  <button className="btn btn-ghost btn-sm uikit-action">查看</button>
+                  <i data-lucide="more-horizontal" style={{width:16,height:16,color:'var(--muted-foreground)',cursor:'pointer',flexShrink:0}}></i>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Action row */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
+        <button className="btn btn-outline btn-md" data-component="button">导出数据</button>
+        <button className="btn btn-solid btn-md" data-component="button">添加作品</button>
+        <button className="btn btn-solid btn-md" data-component="button" disabled>批量删除</button>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── Movies Screen ───────── */
+function MoviesScreen() {
+  return (
+    <div className="screen-fade-active">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-5)' }}>
+        <div>
+          <h2 className="section-title">热门影视</h2>
+          <p className="section-subtitle" style={{ marginBottom: 0 }}>高评分东亚电影精选</p>
+        </div>
+        <div style={{ display: 'flex', gap: 'var(--space-3)', flexShrink: 0 }}>
+          <button className="btn btn-ghost btn-sm" data-component="button">筛选</button>
+          <button className="btn btn-ghost btn-sm" data-component="button">排序</button>
+          <button className="btn btn-solid btn-sm" data-component="button">搜索</button>
+        </div>
+      </div>
+
+      {/* Poster Cards */}
+      <div className="poster-grid-3" data-component="card">
+        {movies.slice(0, 6).map((m, i) => (
+          <div className="card-poster" key={i}>
+            <div className="card-poster-img" style={{ background: m.gradient }}></div>
+            <div className="card-poster-body">
+              <h4 className="card-poster-title">{m.title}</h4>
+              <div className="card-poster-meta">
+                <span>{m.year}</span>
+                <span style={{ opacity: 0.4 }}>|</span>
+                <span className="rating-badge">{m.rating}</span>
+              </div>
+              <div className="card-poster-tags">
+                {m.genre.map((g, gi) => (
+                  <span className="card-tag" key={gi}>{g}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'var(--space-6)' }}>
+        <button className="btn btn-outline btn-md" data-component="button">加载更多</button>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── People Screen ───────── */
+function PeopleScreen() {
+  return (
+    <div className="screen-fade-active">
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-5)' }}>
+        <div>
+          <h2 className="section-title">演员库</h2>
+          <p className="section-subtitle" style={{ marginBottom: 0 }}>东亚地区活跃演员档案</p>
+        </div>
+        <button className="btn btn-solid btn-sm" data-component="button" style={{ flexShrink: 0 }}>搜索演员</button>
+      </div>
+
+      {/* Info Cards */}
+      <div className="info-grid" data-component="card" style={{ marginBottom: 'var(--space-6)' }}>
+        {people.slice(0, 4).map((p, i) => (
+          <div className="card-info" key={i}>
+            <div className={`card-info-avatar ${p.avatar}`}></div>
+            <div className="card-info-body">
+              <span className="card-info-name">{p.name}</span>
+              <span className="card-info-role">{p.role}</span>
+              <span className="card-info-detail">{p.known}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Compact Table */}
+      <h3 className="section-title" style={{ fontSize: 'var(--font-size-h4)', marginBottom: 'var(--space-3)' }}>演员索引</h3>
+      <div data-component="table" className="uikit-table-wrap" style={{ borderRadius: 'var(--radius-md)', boxShadow: 'var(--shadow-1)', overflow: 'hidden' }}>
+        <table className="tbl tbl-compact">
+          <thead>
+            <tr>
+              <th>姓名</th>
+              <th>代表作</th>
+              <th>地区</th>
+              <th>作品数</th>
+              <th className="uikit-action-cell">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {people.map((p, i) => (
+              <tr key={i}>
+                <td style={{ color: 'var(--foreground)', fontWeight: 500 }} className="uikit-truncate">{p.name}</td>
+                <td className="uikit-truncate">{p.known}</td>
+                <td className="uikit-truncate">{i < 3 ? '中国' : i < 5 ? '韩国' : '日本'}</td>
+                <td className="uikit-nowrap" style={{ fontVariantNumeric: 'tabular-nums' }}>{42 - i * 5}</td>
+                <td className="uikit-action-cell">
+                  <button className="btn btn-ghost btn-sm uikit-action">查看</button>
+                  <i data-lucide="chevron-right" style={{width:14,height:14,color:'var(--muted-foreground)',cursor:'pointer',flexShrink:0}}></i>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── App Shell ───────── */
+function App() {
+  const [screen, setScreen] = useState('overview');
+
+  const handleNav = useCallback((s) => {
+    setScreen(s);
+  }, []);
+
+  return (
+    <div className="uikit-shell" data-layout-guard="uikit-v1" style={{ '--uikit-sidebar-w': '240px' }}>
+      <AppSidebar current={screen} onNav={handleNav} />
+      <div className="page-main uikit-main">
+        <Topbar />
+        <div className="page-body">
+          {screen === 'overview' && <OverviewScreen />}
+          {screen === 'movies' && <MoviesScreen />}
+          {screen === 'people' && <PeopleScreen />}
+          {screen === 'ranking' && <OverviewScreen />}
+          {screen === 'settings' && <OverviewScreen />}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ───────── Mount ───────── */
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+lucide.createIcons();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table - test</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 12px; background: var(--color-background); font-family: var(--font-body); color: var(--color-on-surface); }
+  .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted-foreground); min-width: 92px; flex-shrink: 0; }
+  .divider { border: none; border-top: 1px solid var(--color-outline-variant); margin: 12px 0; }
+
+  /* @component-css-start */
+  .tbl-wrap { width: 100%; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: var(--font-size-body); background: var(--card); }
+  .tbl thead th { text-align: left; padding: var(--space-3) var(--space-4); font-weight: 500; color: var(--color-on-surface-variant); background: var(--secondary); border-bottom: 1px solid var(--border); white-space: nowrap; }
+  .tbl tbody td { padding: var(--space-3) var(--space-4); height: 48px; border-bottom: 1px solid var(--color-outline-variant); white-space: nowrap; }
+  .tbl tbody tr { transition: filter .15s; }
+  .tbl tbody tr:hover { filter: brightness(0.97); }
+  .tbl-compact thead th { padding: var(--space-2) var(--space-3); font-size: var(--font-size-caption); }
+  .tbl-compact tbody td { padding: var(--space-2) var(--space-3); height: 36px; font-size: var(--font-size-caption); }
+  /* @component-css-end */
+</style>
+</head>
+<body>
+  <div class="row"><span class="label">默认密度</span></div>
+  <div class="row">
+    <div class="tbl-wrap" data-evidence-sample="default">
+      <table class="tbl">
+        <thead><tr><th>标题</th><th>年份</th><th>评分</th><th>类型</th></tr></thead>
+        <tbody>
+          <tr><td>项目 1</td><td>2024</td><td>4.8</td><td>类型 A</td></tr>
+          <tr><td>项目 2</td><td>2023</td><td>4.5</td><td>类型 B</td></tr>
+          <tr><td>项目 3</td><td>2024</td><td>4.2</td><td>类型 C</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="row"><span class="label">紧凑密度</span></div>
+  <div class="row">
+    <div class="tbl-wrap" data-evidence-sample="compact">
+      <table class="tbl tbl-compact">
+        <thead><tr><th>标题</th><th>年份</th><th>评分</th><th>类型</th></tr></thead>
+        <tbody>
+          <tr><td>项目 1</td><td>2024</td><td>4.8</td><td>类型 A</td></tr>
+          <tr><td>项目 2</td><td>2023</td><td>4.5</td><td>类型 B</td></tr>
+          <tr><td>项目 3</td><td>2024</td><td>4.2</td><td>类型 C</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "corePreviewComponents": [
+    { "slot": "button", "slug": "button", "name": "Button", "contractFile": "components/button.json" },
+    { "slot": "card", "slug": "card", "name": "Card", "contractFile": "components/card.json" },
+    { "slot": "navigation", "slug": "navigation", "name": "Navigation", "contractFile": "components/navigation.json" },
+    { "slot": "table", "slug": "table", "name": "Table", "contractFile": "components/table.json" }
+  ],
+  "supportEvidenceComponents": [
+    { "slot": "chart", "slug": "chart", "name": "Chart", "contractFile": "components/chart.json" },
+    { "slot": "sidebar", "slug": "sidebar", "name": "Sidebar", "contractFile": "components/sidebar.json" }
+  ],
+  "layout": {
+    "sidebarColumnWidth": "240px"
+  },
+  "allowedComponents": ["button", "card", "navigation", "table", "chart", "sidebar"],
+  "brandData": {
+    "productType": "Dashboard",
+    "kitType": "dashboard",
+    "personality": ["minimal", "clean", "refined", "neutral", "data-focused"],
+    "language": "zh"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "slug": "card",
+  "schemaVersion": 2,
+  "name": "Card",
+  "category": "containers",
+  "sourceKind": "from-scratch",
+  "confidence": "medium",
+  "semanticTypeCandidates": [
+    { "type": "card", "evidence": "Primary container for movie/show entries with poster, metadata, and actions" }
+  ],
+  "variantDimensions": [
+    { "name": "variant", "values": ["poster", "stat", "info"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "poster",
+      "whySelected": "Hero card for movie/show entries with poster image",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "borderRadius": "var(--radius-lg)",
+        "shadow": "var(--shadow-2)",
+        "overflow": "hidden",
+        "imgAspectRatio": "2/3",
+        "padding": "var(--space-4)"
+      },
+      "childrenDigest": ["poster image", "title", "rating badge", "year", "genre tags"]
+    },
+    {
+      "id": "stat",
+      "whySelected": "Compact metric display card",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "borderRadius": "var(--radius-md)",
+        "shadow": "var(--shadow-1)",
+        "padding": "var(--space-5)",
+        "gap": "var(--space-3)"
+      },
+      "childrenDigest": ["metric value", "label", "trend indicator"]
+    },
+    {
+      "id": "info",
+      "whySelected": "Detail card for cast/crew information",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "borderRadius": "var(--radius-md)",
+        "shadow": "var(--shadow-1)",
+        "padding": "var(--space-5)"
+      },
+      "childrenDigest": ["avatar", "name", "role", "known-for"]
+    }
+  ],
+  "anatomy": ["media area (optional)", "content area", "metadata section"],
+  "structurePatterns": ["grid layout (poster cards)", "stacked vertical (info cards)"],
+  "usageHints": {
+    "priorityHint": "high",
+    "context": "Movie listings, stat dashboards, cast information panels"
+  },
+  "doNotInvent": ["interactive card flip", "drag-and-drop reorder", "expandable card accordion"],
+  "unknowns": ["poster image border treatment on hover"]
+}

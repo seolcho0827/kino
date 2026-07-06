@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "slug": "button",
+      "name": "Button",
+      "category": "actions",
+      "sourceKind": "from-scratch",
+      "confidence": "medium",
+      "variantCount": 4,
+      "priorityHint": "high",
+      "keyInsightSeed": "Minimal ghost buttons with subtle hover transitions"
+    },
+    {
+      "slug": "card",
+      "name": "Card",
+      "category": "containers",
+      "sourceKind": "from-scratch",
+      "confidence": "medium",
+      "variantCount": 3,
+      "priorityHint": "high",
+      "keyInsightSeed": "Cinematic poster cards with layered shadow elevation"
+    },
+    {
+      "slug": "table",
+      "name": "Table",
+      "category": "data-display",
+      "sourceKind": "from-scratch",
+      "confidence": "medium",
+      "variantCount": 2,
+      "priorityHint": "high",
+      "keyInsightSeed": "Clean data tables with subtle row separation"
+    },
+    {
+      "slug": "chart",
+      "name": "Chart",
+      "category": "data-display",
+      "sourceKind": "from-scratch",
+      "confidence": "low",
+      "variantCount": 2,
+      "priorityHint": "medium",
+      "keyInsightSeed": "Minimal stat cards with sparkline-style indicators"
+    },
+    {
+      "slug": "navigation",
+      "name": "Navigation",
+      "category": "navigation",
+      "sourceKind": "from-scratch",
+      "confidence": "medium",
+      "variantCount": 2,
+      "priorityHint": "high",
+      "keyInsightSeed": "Understated top nav with blur-glass effect"
+    },
+    {
+      "slug": "sidebar",
+      "name": "Sidebar",
+      "category": "navigation",
+      "sourceKind": "from-scratch",
+      "confidence": "medium",
+      "variantCount": 2,
+      "priorityHint": "medium",
+      "keyInsightSeed": "Compact icon sidebar with collapsible sections"
+    }
+  ]
+}

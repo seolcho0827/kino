@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sidebar — test Design System</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+<style>
+body { margin: 0; padding: var(--space-3); background: var(--color-background); font-family: var(--font-family-base); color: var(--color-on-surface); }
+.row { display: flex; gap: var(--space-2); align-items: flex-start; margin-bottom: var(--space-2); flex-wrap: wrap; }
+.label { font-size: var(--font-size-caption); font-weight: var(--font-weight-eyebrow); color: var(--color-muted-foreground); text-transform: uppercase; letter-spacing: 0.08em; min-width: 92px; flex-shrink: 0; padding-top: var(--space-2); }
+.divider { border: none; border-top: 1px solid var(--color-outline); margin: var(--space-3) 0; }
+/* @component-css-start */
+.sidebar { width: 240px; background: var(--color-sidebar); border-right: 1px solid var(--color-outline); border-radius: var(--radius-lg); overflow: hidden; flex-shrink: 0; }
+.sidebar-brand { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-outline); }
+.sidebar-brand-icon { width: 32px; height: 32px; background: var(--color-primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: #fff; }
+.sidebar-brand-name { font-family: var(--font-heading); font-size: var(--type-body-md); font-weight: var(--font-weight-h4); color: var(--color-on-surface); white-space: nowrap; }
+.sidebar-nav { padding: var(--space-2) 0; }
+.sidebar-section-title { font-size: var(--font-size-caption); font-weight: 500; color: var(--color-muted-foreground); text-transform: uppercase; letter-spacing: 0.08em; padding: var(--space-2) var(--space-4) var(--space-1); }
+.sidebar-item { display: flex; align-items: center; gap: var(--space-3); height: 40px; padding: 0 var(--space-4); border-radius: var(--radius-sm); color: var(--color-on-surface-variant); font-size: var(--type-body-sm); cursor: pointer; transition: background .15s; text-decoration: none; white-space: nowrap; }
+.sidebar-item:hover { background: var(--color-surface-container-high); }
+.sidebar-item.active { background: var(--color-primary-container); color: var(--color-on-primary-container); font-weight: 500; }
+.sidebar-item-icon { flex-shrink: 0; width: var(--size-icon-md); height: var(--size-icon-md); display: flex; align-items: center; justify-content: center; }
+.sidebar-filter { width: 260px; background: var(--color-sidebar); border-right: 1px solid var(--color-outline); border-radius: var(--radius-lg); overflow: hidden; flex-shrink: 0; }
+.sidebar-filter-section { padding: var(--space-4); border-bottom: 1px solid var(--color-outline); }
+.sidebar-filter-section:last-child { border-bottom: none; }
+.sidebar-filter-title { font-size: var(--font-size-caption); font-weight: 500; color: var(--color-muted-foreground); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2); }
+.sidebar-filter-item { display: flex; align-items: center; gap: var(--space-2); padding: var(--space-1) 0; font-size: var(--type-body-sm); color: var(--color-on-surface-variant); cursor: pointer; transition: background .15s; border-radius: var(--radius-sm); }
+.sidebar-filter-item:hover { background: var(--color-surface-container-high); }
+.sidebar-filter-item.selected { color: var(--color-primary); font-weight: 500; }
+.sidebar-filter-cb { width: 16px; height: 16px; border: 2px solid var(--color-outline); border-radius: 3px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.sidebar-filter-cb.checked { background: var(--color-primary); border-color: var(--color-primary); }
+.sidebar-filter-count { margin-left: auto; font-size: var(--font-size-caption); color: var(--color-muted-foreground); }
+/* @component-css-end */
+</style>
+</head>
+<body>
+<div class="row"><span class="label">导航侧栏</span></div>
+<div class="row">
+  <nav class="sidebar" data-evidence-sample="nav-sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i></div>
+      <span class="sidebar-brand-name">MediaHub</span>
+    </div>
+    <div class="sidebar-nav">
+      <div class="sidebar-section-title">主菜单</div>
+      <a class="sidebar-item active"><span class="sidebar-item-icon"><i data-lucide="home" style="width:20px;height:20px"></i></span><span>概览</span></a>
+      <a class="sidebar-item"><span class="sidebar-item-icon"><i data-lucide="film" style="width:20px;height:20px"></i></span><span>电影</span></a>
+      <a class="sidebar-item"><span class="sidebar-item-icon"><i data-lucide="tv" style="width:20px;height:20px"></i></span><span>剧集</span></a>
+      <a class="sidebar-item"><span class="sidebar-item-icon"><i data-lucide="users" style="width:20px;height:20px"></i></span><span>人物</span></a>
+      <div class="sidebar-section-title" style="margin-top:var(--space-2)">系统</div>
+      <a class="sidebar-item"><span class="sidebar-item-icon"><i data-lucide="settings" style="width:20px;height:20px"></i></span><span>设置</span></a>
+    </div>
+  </nav>
+</div>
+<hr class="divider">
+<div class="row"><span class="label">筛选面板</span></div>
+<div class="row">
+  <aside class="sidebar-filter" data-evidence-sample="filter">
+    <div class="sidebar-filter-section">
+      <div class="sidebar-filter-title">类型</div>
+      <div class="sidebar-filter-item selected"><div class="sidebar-filter-cb checked"><i data-lucide="check" style="width:12px;height:12px;color:#fff"></i></div><span>动作</span><span class="sidebar-filter-count">128</span></div>
+      <div class="sidebar-filter-item selected"><div class="sidebar-filter-cb checked"><i data-lucide="check" style="width:12px;height:12px;color:#fff"></i></div><span>剧情</span><span class="sidebar-filter-count">256</span></div>
+      <div class="sidebar-filter-item"><div class="sidebar-filter-cb"></div><span>喜剧</span><span class="sidebar-filter-count">92</span></div>
+    </div>
+    <div class="sidebar-filter-section">
+      <div class="sidebar-filter-title">年份</div>
+      <div class="sidebar-filter-item selected"><div class="sidebar-filter-cb checked"><i data-lucide="check" style="width:12px;height:12px;color:#fff"></i></div><span>2024</span><span class="sidebar-filter-count">64</span></div>
+      <div class="sidebar-filter-item"><div class="sidebar-filter-cb"></div><span>2023</span><span class="sidebar-filter-count">312</span></div>
+      <div class="sidebar-filter-item"><div class="sidebar-filter-cb"></div><span>2022</span><span class="sidebar-filter-count">198</span></div>
+    </div>
+    <div class="sidebar-filter-section">
+      <div class="sidebar-filter-title">评分</div>
+      <div class="sidebar-filter-item selected"><div class="sidebar-filter-cb checked"><i data-lucide="check" style="width:12px;height:12px;color:#fff"></i></div><span>8.0+</span><span class="sidebar-filter-count">45</span></div>
+      <div class="sidebar-filter-item"><div class="sidebar-filter-cb"></div><span>7.0+</span><span class="sidebar-filter-count">156</span></div>
+    </div>
+  </aside>
+</div>
+<script>lucide.createIcons();</script>
+</body>
+</html>

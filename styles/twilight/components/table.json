@@ -1,0 +1,50 @@
+{
+  "slug": "table",
+  "schemaVersion": 2,
+  "name": "Table",
+  "category": "data-display",
+  "sourceKind": "from-scratch",
+  "confidence": "medium",
+  "semanticTypeCandidates": [
+    { "type": "table", "evidence": "Core component for displaying structured film/show data in rows and columns" }
+  ],
+  "variantDimensions": [
+    { "name": "density", "values": ["compact", "default"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "default",
+      "whySelected": "Standard data table for listings",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "headerBg": "var(--surface-secondary)",
+        "borderBottom": "1px solid var(--border)",
+        "rowHeight": "var(--size-table-row)",
+        "fontSize": "var(--type-body)",
+        "paddingInline": "var(--space-4)",
+        "headerFontWeight": "500"
+      },
+      "childrenDigest": ["column headers", "data rows with title, year, rating, genre"]
+    },
+    {
+      "id": "compact",
+      "whySelected": "Dense variant for high-data-density views",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "borderBottom": "1px solid var(--border)",
+        "rowHeight": "36px",
+        "fontSize": "var(--type-caption)",
+        "paddingInline": "var(--space-3)"
+      },
+      "childrenDigest": ["compact rows with abbreviated data"]
+    }
+  ],
+  "anatomy": ["table header", "data rows", "row hover state"],
+  "structurePatterns": ["scrollable vertical list with fixed header"],
+  "usageHints": {
+    "priorityHint": "high",
+    "context": "Film databases, search results, ranking lists"
+  },
+  "doNotInvent": ["tree-table expansion", "inline cell editing", "column reordering drag"],
+  "unknowns": ["sticky header behavior", "row selection checkbox style"]
+}

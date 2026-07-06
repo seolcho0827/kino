@@ -1,0 +1,50 @@
+{
+  "slug": "chart",
+  "schemaVersion": 2,
+  "name": "Chart",
+  "category": "data-display",
+  "sourceKind": "from-scratch",
+  "confidence": "low",
+  "semanticTypeCandidates": [
+    { "type": "chart", "evidence": "Visual data representation for analytics and statistics panels" }
+  ],
+  "variantDimensions": [
+    { "name": "type", "values": ["stat-card", "sparkline"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "stat-card",
+      "whySelected": "Primary metric display with value and label",
+      "traits": {
+        "bg": "var(--surface-card)",
+        "borderRadius": "var(--radius-md)",
+        "padding": "var(--space-5)",
+        "shadow": "var(--shadow-1)",
+        "valueFontSize": "var(--type-h2)",
+        "valueFontWeight": "600",
+        "labelFontSize": "var(--type-caption)",
+        "labelColor": "var(--color-muted-foreground)"
+      },
+      "childrenDigest": ["large metric number", "label", "change percentage"]
+    },
+    {
+      "id": "sparkline",
+      "whySelected": "Inline trend visualization for dashboards",
+      "traits": {
+        "bg": "transparent",
+        "strokeColor": "var(--color-primary)",
+        "strokeWidth": "2px",
+        "height": "40px"
+      },
+      "childrenDigest": ["SVG sparkline path", "optional data points"]
+    }
+  ],
+  "anatomy": ["value display", "label", "trend indicator (optional)", "visualization (optional)"],
+  "structurePatterns": ["single metric card", "multi-metric row"],
+  "usageHints": {
+    "priorityHint": "medium",
+    "context": "Dashboard statistics panels, rating distribution, view count trends"
+  },
+  "doNotInvent": ["interactive pie/donut charts", "3D bar charts", "map visualizations"],
+  "unknowns": ["exact chart library to use", "animation behavior on data change"]
+}

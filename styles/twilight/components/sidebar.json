@@ -1,0 +1,54 @@
+{
+  "slug": "sidebar",
+  "schemaVersion": 2,
+  "name": "Sidebar",
+  "category": "navigation",
+  "sourceKind": "from-scratch",
+  "confidence": "medium",
+  "semanticTypeCandidates": [
+    { "type": "sidebar", "evidence": "Side panel for filter categories and navigation sections" }
+  ],
+  "variantDimensions": [
+    { "name": "variant", "values": ["filter", "nav-sidebar"] }
+  ],
+  "representativeVariants": [
+    {
+      "id": "nav-sidebar",
+      "whySelected": "Primary side navigation for dashboard sections",
+      "traits": {
+        "bg": "var(--surface-secondary)",
+        "width": "240px",
+        "borderRight": "1px solid var(--border)",
+        "itemHeight": "var(--size-nav-item)",
+        "itemPaddingInline": "var(--space-4)",
+        "activeBg": "rgba(255,255,255,0.06)",
+        "activeColor": "var(--color-primary)",
+        "fontSize": "var(--type-body)",
+        "iconSize": "var(--size-icon)"
+      },
+      "childrenDigest": ["section icons", "nav labels (Dashboard, Movies, TV, People, Settings)", "active indicator"]
+    },
+    {
+      "id": "filter",
+      "whySelected": "Collapsible filter panel for search refinement",
+      "traits": {
+        "bg": "var(--surface-secondary)",
+        "width": "260px",
+        "borderRight": "1px solid var(--border)",
+        "sectionGap": "var(--space-5)",
+        "sectionTitleFontWeight": "500",
+        "sectionTitleFontSize": "var(--type-caption)",
+        "sectionTitleColor": "var(--color-muted-foreground)"
+      },
+      "childrenDigest": ["Genre filter", "Year filter", "Rating filter", "Country filter"]
+    }
+  ],
+  "anatomy": ["section groups", "nav items with icon + label", "active state indicator"],
+  "structurePatterns": ["fixed left panel", "collapsible overlay"],
+  "usageHints": {
+    "priorityHint": "medium",
+    "context": "Dashboard left nav, search filter panels"
+  },
+  "doNotInvent": ["nested multi-level tree nav", "drag-to-reorder sections", "sidebar widget panels"],
+  "unknowns": ["collapse/expand animation", "responsive breakpoint for hidden sidebar"]
+}
