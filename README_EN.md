@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.jpg" alt="Kino Design System" width="640">
+  <img src="assets/banner.jpg" alt="Kino Design System">
 </p>
 
 <h1 align="center">Kino Design System</h1>
