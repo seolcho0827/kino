@@ -104,3 +104,11 @@ import tokens from './styles/twilight/tokens/css.json';
 ## 许可证
 
 MIT
+
+## 致谢 / Credits
+
+Kino 的设计和实现参考了以下优秀项目：
+
+- [Ant Design](https://github.com/ant-design/ant-design) (MIT License)
+- [TDesign](https://github.com/Tencent/tdesign-vue-next) (MIT License)
+
