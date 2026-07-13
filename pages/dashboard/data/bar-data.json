@@ -1,0 +1,14 @@
+[
+  { "h": "barH55", "color": "var(--chart-1)" },
+  { "h": "barH70", "color": "var(--chart-1)" },
+  { "h": "barH85", "color": "var(--chart-1)" },
+  { "h": "barH65", "color": "var(--chart-1)" },
+  { "h": "barH90", "color": "var(--chart-1)" },
+  { "h": "barH75", "color": "var(--chart-1)" },
+  { "h": "barH95", "color": "var(--chart-2)" },
+  { "h": "barH80", "color": "var(--chart-1)" },
+  { "h": "barH60", "color": "var(--chart-1)" },
+  { "h": "barH45", "color": "var(--chart-1)" },
+  { "h": "barH50", "color": "var(--chart-1)" },
+  { "h": "barH30", "color": "var(--chart-1)" }
+]

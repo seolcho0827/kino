@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card</title>
+<link rel="stylesheet" href="../../styles/twilight/tokens.css">
+<link rel="stylesheet" href="./card.css">
+<style>
+body { margin: 0; padding: var(--space-3); background: var(--color-background); font-family: var(--font-family-base); color: var(--color-on-surface); }
+.row { display: flex; gap: var(--space-4); align-items: flex-start; margin-bottom: var(--space-2); flex-wrap: wrap; }
+.label { font-size: var(--font-size-eyebrow); font-weight: var(--font-weight-eyebrow); color: var(--color-muted-foreground); text-transform: uppercase; letter-spacing: 0.08em; min-width: 92px; flex-shrink: 0; line-height: 1; padding-top: var(--space-2); }
+.divider { border: none; border-top: 1px solid var(--color-outline-variant); margin: var(--space-2) 0; }
+</style>
+</head>
+<body>
+<div class="row">
+  <span class="label">海报卡片</span>
+  <div class="poster-grid">
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-1"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">星际穿越</p>
+        <p class="card-poster-meta">2014 · 8.7</p>
+        <div class="card-poster-tags"><span class="card-tag">科幻</span><span class="card-tag">冒险</span></div>
+      </div>
+    </div>
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-2"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">盗梦空间</p>
+        <p class="card-poster-meta">2010 · 9.3</p>
+        <div class="card-poster-tags"><span class="card-tag">悬疑</span><span class="card-tag">动作</span></div>
+      </div>
+    </div>
+    <div class="card-poster">
+      <div class="card-poster-img poster-img-3"></div>
+      <div class="card-poster-body">
+        <p class="card-poster-title">沙丘</p>
+        <p class="card-poster-meta">2021 · 8.0</p>
+        <div class="card-poster-tags"><span class="card-tag">科幻</span><span class="card-tag">史诗</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr class="divider">
+<div class="row">
+  <span class="label">指标卡片</span>
+  <div class="stat-rail">
+    <div class="card-stat">
+      <span class="card-stat-label">月活用户</span>
+      <p class="card-stat-value">12,480</p>
+      <span class="card-stat-trend trend-up">+12.5%</span>
+    </div>
+    <div class="card-stat">
+      <span class="card-stat-label">总收入</span>
+      <p class="card-stat-value">¥84.2K</p>
+      <span class="card-stat-trend trend-up">+8.3%</span>
+    </div>
+    <div class="card-stat">
+      <span class="card-stat-label">转化率</span>
+      <p class="card-stat-value">3.6%</p>
+      <span class="card-stat-trend trend-down">-1.2%</span>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <span class="label">信息卡片</span>
+  <div class="info-rail">
+    <div class="card-info">
+      <div class="card-info-avatar avatar-1"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">张伟</p>
+        <p class="card-info-role">导演</p>
+        <p class="card-info-detail">代表作: 星际穿越</p>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-info-avatar avatar-2"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">李娜</p>
+        <p class="card-info-role">主演</p>
+        <p class="card-info-detail">代表作: 盗梦空间</p>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-info-avatar avatar-3"></div>
+      <div class="card-info-body">
+        <p class="card-info-name">王磊</p>
+        <p class="card-info-role">制片人</p>
+        <p class="card-info-detail">代表作: 沙丘</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

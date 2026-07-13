@@ -76,12 +76,11 @@ Borders are thin and utilitarian: the default border token is `#d5d0c8` (neutral
 
 ## Index
 
-- `README.md` -- this file
-- `colors_and_type.css` -- all CSS custom properties for color, type, radius, shadow, spacing (light + dark)
-- `components.css` -- aggregated component CSS extracted from preview pages
-- `css.json` -- structured JSON token representation
-- `preview/` -- self-contained HTML preview cards for each component
-- `components/` -- per-component contract JSON (slug.json) and index
+- `tokens.css` -- all CSS custom properties for color, type, radius, shadow, spacing (light + dark)
+- `tokens.json` -- structured JSON token representation
+- `../../components/` -- component layer, each component in its own folder (HTML + CSS + JSON)
+- `../../pages/` -- page layer, data separated from templates
+- `../../contracts/` -- rules and metadata
 
 ## Caveats / known substitutions
 

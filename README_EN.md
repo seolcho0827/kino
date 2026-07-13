@@ -2,10 +2,10 @@
   <img src="assets/banner.jpg" alt="Kino Design System">
 </p>
 
-<h1 align="center">Kino Design System</h1>
+<h1 align="center">Kino — Web Design Framework</h1>
 
 <p align="center">
-  Weather-themed design system monorepo<br>
+  Weather-themed design framework<br>
   <a href="README.md">中文</a> | English
 </p>
 
@@ -13,93 +13,48 @@
 
 ## Overview
 
-Kino is a monorepo of weather-themed design system variants. Each style is a self-contained design system with its own tokens, components, previews, and documentation.
+Kino is a weather-themed design framework with a three-layer architecture:
 
-The first release, **Twilight**, is a dark cinematic dashboard design system tailored for data-dense products like film/TV information databases.
+- **Theme layer** `styles/` — CSS-driven visual styles; switch themes by switching CSS files
+- **Component layer** `components/` — Pure presentational UI units, each in its own folder (HTML+CSS+JSON)
+- **Page layer** `pages/` — Complete pages with separated data and templates
 
-## Styles
+## Current Theme
 
-| Style | Version | Description | Palette |
-|---|---|---|---|
-| [Twilight](styles/twilight/) | v1.0.0 | Dark cinematic dashboard with warmth | Amber `#e8922a` + Teal `#14b8a6` on warm dark surface |
+| Style | Version | Palette |
+|---|---|---|
+| [Twilight](styles/twilight/README_EN.md) | v1.0.0 | Amber `#e8922a` + Teal `#14b8a6`, warm dark base |
 
-### Roadmap
-
-| Style | Vision |
-|---|---|
-| Dawn | Bright, optimistic palette for marketing and landing pages |
-| Frost | Cool, crisp palette for data-heavy analytical tools |
-| Aurora | Vibrant, gradient-rich palette for creative and media applications |
-| Thunder | Bold, high-contrast palette for admin and operations dashboards |
-
-## UI Kit Preview
-
-**Twilight — Dashboard**
-
-<p align="center">
-  <img src="assets/uikit-dashboard.jpg" alt="Twilight Dashboard UI Kit" width="640">
-</p>
-
-## Repository Structure
+## Directory
 
 ```
 kino/
-├── assets/                          # README image assets
-├── styles/
-│   └── twilight/                    # Each style is a complete design system
-│       ├── tokens/
-│       │   ├── colors_and_type.css  # CSS custom properties (SSOT)
-│       │   └── css.json             # Structured token data
-│       ├── components/
-│       │   ├── index.json           # Component index
-│       │   └── {slug}.json          # Per-component contracts
-│       ├── preview/
-│       │   └── component-{slug}.html # Component preview cards
-│       ├── ui_kits/
-│       │   └── dashboard/index.html # Interactive UI Kit
-│       ├── README.md                # Style documentation (Chinese)
-│       ├── README_EN.md             # Style documentation (English)
-│       └── SKILL.md                 # AI-consumable skill card
-└── shared/                          # (planned) Common assets
+├── assets/                       Images
+├── styles/                       Theme layer
+│   └── twilight/tokens.css       CSS variables (single source of truth)
+├── components/                   Component layer (self-contained)
+│   ├── button/button.html        Preview + CSS + contract
+│   ├── card/
+│   ├── table/
+│   ├── chart/
+│   ├── navigation/
+│   ├── sidebar/
+│   └── index.json                Component index
+├── pages/                        Page layer
+│   └── dashboard/
+│       ├── index.html            Page template
+│       └── data/                 Data files (JSON)
+├── contracts/                    Rules & metadata
+│   ├── AI_RULES.md               AI architecture rules
+│   └── styles-index.json         Theme registry
+└── README.md
 ```
 
-## Usage
+## Core Constraints
 
-### Drop-in CSS Variables
-
-```html
-<link rel="stylesheet" href="styles/twilight/tokens/colors_and_type.css">
-```
-
-All components consume design tokens via CSS variables like `var(--color-primary)`, `var(--radius-md)`, `var(--space-4)`.
-
-### Token Data for Toolchains
-
-```js
-import tokens from './styles/twilight/tokens/css.json';
-// Use to generate Tailwind config, CSS-in-JS themes, Figma variables, etc.
-```
-
-### Component Contracts
-
-Each `components/{slug}.json` defines:
-- Variant dimensions and representative variants
-- Component anatomy, structure patterns, and usage hints
-- AI confidence levels
-
-## Design Philosophy
-
-- **Minimal restraint** — Clean, medium information density, no visual clutter
-- **Dark-first** — Dark canvas for cinematic feel, optimized for extended data browsing
-- **Apple-inspired aesthetics** — Ultra-subtle shadows, generous whitespace, refined typography
-- **Warm neutral tones** — Avoids cold greys; uses warm neutrals with amber as the dominant accent
-
-## Contributing
-
-1. Create a new style branch: `git checkout -b style/dawn`
-2. Follow the existing directory structure under `styles/`
-3. Ensure `tokens/colors_and_type.css` is the single source of truth
-4. All color values must be 6-digit hex or rgba()
+1. **Components contain no data or logic** — they only render
+2. **Add features by creating folders** — never modify existing files
+3. **All style values via CSS variables** — switch themes by switching CSS
 
 ## License
 

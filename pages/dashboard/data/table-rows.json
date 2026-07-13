@@ -1,0 +1,9 @@
+[
+  { "title": "千与千寻", "director": "宫崎骏", "country": "日本", "year": "2001", "rating": "9.4", "votes": "1.2M", "status": "已上映" },
+  { "title": "霸王别姬", "director": "陈凯歌", "country": "中国", "year": "1993", "rating": "9.6", "votes": "980K", "status": "已上映" },
+  { "title": "寄生虫", "director": "奉俊昊", "country": "韩国", "year": "2019", "rating": "8.8", "votes": "860K", "status": "已上映" },
+  { "title": "花样年华", "director": "王家卫", "country": "中国香港", "year": "2000", "rating": "8.7", "votes": "720K", "status": "已上映" },
+  { "title": "燃烧女子的肖像", "director": "瑟琳·席安玛", "country": "法国", "year": "2019", "rating": "8.6", "votes": "340K", "status": "已上映" },
+  { "title": "东京物语", "director": "小津安二郎", "country": "日本", "year": "1953", "rating": "9.2", "votes": "180K", "status": "已上映" },
+  { "title": "下一站天国", "director": "是枝裕和", "country": "日本", "year": "1998", "rating": "8.3", "votes": "120K", "status": "已上映" }
+]

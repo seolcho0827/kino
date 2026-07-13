@@ -1,0 +1,11 @@
+[
+  { "title": "主要功能", "items": [
+    { "icon": "layout-dashboard", "label": "数据总览", "screen": "overview", "active": true },
+    { "icon": "film", "label": "热门影视", "screen": "movies" },
+    { "icon": "users", "label": "演员库", "screen": "people" }
+  ]},
+  { "title": "管理", "items": [
+    { "icon": "star", "label": "排行榜", "screen": "ranking" },
+    { "icon": "settings", "label": "系统设置", "screen": "settings" }
+  ]}
+]

@@ -3,29 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="../../styles/twilight/tokens.css">
+<link rel="stylesheet" href="./button.css">
 <style>
-  /* Page scaffold — NOT extracted */
   body { margin: 0; padding: 12px; background: var(--color-background); font-family: var(--font-body); color: var(--color-on-surface); }
   .row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
   .label { font-size: var(--font-size-caption); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted-foreground); width: 92px; flex-shrink: 0; }
   .divider { border: none; border-top: 1px solid var(--color-outline-variant); margin: 12px 0; }
-
-  /* @component-css-start */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); border: none; cursor: pointer; font-family: var(--font-body); font-weight: 500; line-height: 1; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; transition: background .15s, border-color .15s; flex-shrink: 0; }
-  .btn:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
-  .btn:active { filter: brightness(0.92); }
-  .btn[disabled] { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
-  .btn-solid { background: var(--color-primary); color: #ffffff; }
-  .btn-solid:hover { background: var(--color-primary-hover); }
-  .btn-ghost { background: transparent; color: var(--color-primary); }
-  .btn-ghost:hover { background: var(--color-primary-container); }
-  .btn-outline { background: transparent; color: var(--color-primary); border: 1px solid var(--color-outline); }
-  .btn-outline:hover { background: var(--color-primary-container); border-color: var(--color-primary); }
-  .btn-sm { height: var(--size-button-sm); min-width: var(--size-button-sm); padding: var(--space-1) var(--space-4); font-size: var(--font-size-caption); border-radius: var(--radius-sm); }
-  .btn-md { height: var(--size-button-md); min-width: var(--size-button-md); padding: var(--space-2) var(--space-6); font-size: var(--type-body-md); border-radius: var(--radius-md); }
-  .btn-lg { height: var(--size-button-lg); min-width: var(--size-button-lg); padding: var(--space-3) var(--space-6); font-size: var(--type-body-md); border-radius: var(--radius-md); }
-  /* @component-css-end */
 </style>
 </head>
 <body>

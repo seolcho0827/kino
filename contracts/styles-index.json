@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "themes": [
+    {
+      "name": "twilight",
+      "version": "1.0.0",
+      "tokens": "styles/twilight/tokens.css",
+      "tokensJson": "styles/twilight/tokens.json",
+      "description": "暗色电影感仪表盘，琥珀 (#e8922a) + 青色 (#14b8a6)",
+      "descriptionEn": "Dark cinematic dashboard, amber + teal palette",
+      "metaPath": "styles/twilight/README.md",
+      "skillPath": "styles/twilight/SKILL.md"
+    }
+  ]
+}

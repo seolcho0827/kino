@@ -1,0 +1,8 @@
+[
+  { "title": "千与千寻", "year": "2001", "rating": "9.4", "genre": ["动画","奇幻"], "gradient": "linear-gradient(135deg, #1a3a5c, #2d6a9f, #4ecdc4)" },
+  { "title": "霸王别姬", "year": "1993", "rating": "9.6", "genre": ["剧情","爱情"], "gradient": "linear-gradient(135deg, #5c1a1a, #9f2d2d, #c94e4e)" },
+  { "title": "花样年华", "year": "2000", "rating": "8.7", "genre": ["剧情","爱情"], "gradient": "linear-gradient(135deg, #3d2c1a, #8b6914, #c9a84e)" },
+  { "title": "寄生虫", "year": "2019", "rating": "8.8", "genre": ["剧情","悬疑"], "gradient": "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)" },
+  { "title": "东京物语", "year": "1953", "rating": "9.2", "genre": ["剧情","家庭"], "gradient": "linear-gradient(135deg, #2d1b69, #3c1642, #6b3fa0)" },
+  { "title": "燃烧女子的肖像", "year": "2019", "rating": "8.6", "genre": ["剧情","爱情"], "gradient": "linear-gradient(135deg, #4a2040, #7a3050, #a04060)" }
+]
